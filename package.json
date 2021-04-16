@@ -1,6 +1,6 @@
 {
   "name": "jsof-parser",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "dist/index.js",
   "author": "Anderson D. Rosa <andersondrosa@outlook.com>",
   "license": "MIT",
@@ -10,10 +10,6 @@
     "test": "jest",
     "build-test": "yarn build | jest",
     "links": "find . -type l | grep -v .bin | sed 's/^\\.\\/node_modules\\///'"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/pipehub-js/pipehub.git"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.1",
