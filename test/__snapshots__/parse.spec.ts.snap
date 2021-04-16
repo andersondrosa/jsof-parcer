@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`it should work 1`] = `
+Object {
+  "array": Array [
+    1,
+    2,
+    3,
+    Array [
+      1,
+      2,
+      3,
+      true,
+      false,
+      null,
+    ],
+  ],
+  "function": Object {
+    ":type": "function",
+    "path": "myCustomFunction",
+    "props": Array [
+      Object {
+        ":type": "prop",
+        "path": "props.foo",
+      },
+      Object {
+        ":type": "prop",
+        "path": "props.bar",
+      },
+    ],
+  },
+  "label": "My functional json",
+  "nested": Object {
+    "foo": Object {
+      "bar": Object {
+        ":type": "function",
+        "path": "baz",
+        "props": Array [
+          "lorem",
+          Object {
+            ":type": "function",
+            "path": "ipsum.dolor",
+            "props": Array [
+              Array [
+                1,
+                2,
+                3,
+              ],
+            ],
+          },
+        ],
+      },
+    },
+  },
+}
+`;
