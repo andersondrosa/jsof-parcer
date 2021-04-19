@@ -20,7 +20,8 @@
       "@models/*": ["./src/models/*"],
       "@views/*": ["./src/views/*"],
       "@config/*": ["./src/config/*"]
-    }
+    },
+    "declaration": true
   },
   "include": ["src/**/*"]
 }

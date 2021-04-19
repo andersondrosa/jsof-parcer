@@ -136,7 +136,7 @@ function JsofParse(text: String | Object) {
   function parsePath() {
     const keys = [];
     let init = true;
-    while (i < str.length) {
+    while (i <= str.length) {
       //
       const key = parseKey();
 

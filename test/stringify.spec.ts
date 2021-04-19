@@ -1,5 +1,4 @@
 import JSOF from "../dist";
-JSOF.silence = true;
 
 test("it should work", () => {
   //

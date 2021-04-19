@@ -1,5 +1,4 @@
 import JSOF from "../dist";
-JSOF.silence = true;
 
 test("it should work", () => {
   //
@@ -80,4 +79,27 @@ test("it should break when function don't close", () => {
   const str = `{"fn": fn(true}`;
   const t = () => JSOF.parse(str);
   expect(t).toThrow(Error);
+});
+
+test("it should work with one function", () => {
+  const str = `map()`;
+  const t = () => JSOF.parse(str);
+  expect(t).not.toThrow(Error);
+});
+
+test("it should work with one function and correctly response", () => {
+  const str = `map()`;
+  expect(JSOF.parse(str)).toEqual({
+    ":type": "function",
+    path: "map",
+    props: [],
+  });
+});
+
+test("it should work with one 'prop' and correctly response", () => {
+  const str = `props.foo.bar`;
+  expect(JSOF.parse(str)).toEqual({
+    ":type": "prop",
+    path: "props.foo.bar",
+  });
 });
