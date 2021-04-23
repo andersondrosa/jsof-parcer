@@ -1,6 +1,6 @@
 {
   "name": "jsof-parser",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "dist/index.js",
   "author": "Anderson D. Rosa <andersondrosa@outlook.com>",
   "license": "MIT",

@@ -286,16 +286,7 @@ function JsofParse(text: String | Object) {
         i++;
       }
     }
-    if (str[i] === "e" || str[i] === "E") {
-      i++;
-      if (str[i] === "-" || str[i] === "+") {
-        i++;
-      }
-      expectDigit(str.slice(start, i));
-      while (str[i] >= "0" && str[i] <= "9") {
-        i++;
-      }
-    }
+
     if (i > start) {
       return Number(str.slice(start, i));
     }
@@ -368,7 +359,7 @@ For example:
 For example:
 ${numSoFar}5
 ${" ".repeat(numSoFar.length)}^`);
-      throw new Error("JSON_ERROR_0006 Expecting a digit");
+      throw new Error("JSON_ERROR_0006 Expecting a digit!!!!");
     }
   }
 
