@@ -1,6 +1,7 @@
 import removeComments from "./utils/removeComments";
 
 const isAlpha = (char) => char && /^[a-zA-Z_$]+$/i.test(char);
+const isAhoba = (char) => char && /^[@]+$/i.test(char);
 const isAlphaNum = (char) => char && /^[a-zA-Z_$0-9]+$/i.test(char);
 const isReservedKey = (key) => ["true", "false", "null"].includes(key);
 
@@ -188,6 +189,10 @@ function JsofParse(text: String | Object) {
   }
 
   function parseFunction() {
+    if (str[i] == "@") {
+      i++;
+      return { ":type": "lambda", body: parseFunction() };
+    }
     if (!isAlpha(str[i])) return undefined;
     const path = parsePath();
     if (path == "true") return true;

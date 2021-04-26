@@ -17,6 +17,9 @@ const isVar = (x) =>
 function getFunction(data) {
   //
   const path = data[identifier.path];
+
+  // if (path == "json") return data;
+
   const props = data[identifier.props];
 
   const _props = [];
