@@ -1,26 +1,19 @@
+import identifiers from "./identifiers";
 import typeOf from "./utils/typeOf";
 
-const identifier = {
-  key: ":type",
-  path: "path",
-  props: "props",
-  _func: "function",
-  _prop: "prop",
-};
-
 const isFunc = (x) =>
-  typeOf(x) == "object" && x[identifier.key] == identifier._func;
+  typeOf(x) == "object" && x[identifiers.type] == identifiers._invoker;
 
 const isVar = (x) =>
-  typeOf(x) == "object" && x[identifier.key] == identifier._prop;
+  typeOf(x) == "object" && x[identifiers.type] == identifiers._prop;
 
 function getFunction(data) {
   //
-  const path = data[identifier.path];
+  const path = data[identifiers.path];
 
   // if (path == "json") return data;
 
-  const props = data[identifier.props];
+  const props = data[identifiers.args];
 
   const _props = [];
 
@@ -32,7 +25,7 @@ function getFunction(data) {
 }
 
 function getPath(data) {
-  return data[identifier.path];
+  return data[identifiers.path];
 }
 
 function JsofStringify(data) {

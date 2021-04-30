@@ -1,3 +1,4 @@
+import identifiers from "./identifiers";
 import removeComments from "./utils/removeComments";
 
 const isAlpha = (char) => char && /^[a-zA-Z_$]+$/i.test(char);
@@ -39,9 +40,10 @@ function JsofParse(text: String | Object) {
           eatComma();
           skipWhitespace();
         }
-        const key = parseString();
+        let key = parseString();
         if (key === undefined) {
-          expectObjectKey();
+          key = parseKey();
+          if (!key) expectObjectKey();
         }
         skipWhitespace();
         eatColon();
@@ -188,19 +190,63 @@ function JsofParse(text: String | Object) {
     }
   }
 
+  function parseArguments() {
+    if (str[i] !== "(") return;
+    i++;
+    skipWhitespace();
+    const keys = [];
+    while (true) {
+      const key = parseKey();
+      if (!key) break;
+      keys.push(key);
+      skipWhitespace();
+      if (str[i] === ",") eatComma();
+      skipWhitespace();
+    }
+    if (str[i] == ")") i++;
+    skipWhitespace();
+
+    if (str[i] + str[i + 1] !== "=>") unexpectedToken(str[i]);
+    i += 2;
+
+    skipWhitespace();
+
+    const fn = parseValue();
+
+    return {
+      [identifiers.type]: identifiers._lambda,
+      [identifiers.args]: keys,
+      [identifiers._return]: fn,
+    };
+  }
+
   function parseFunction() {
     if (str[i] == "@") {
       i++;
-      return { ":type": "lambda", body: parseFunction() };
+      return {
+        [identifiers.type]: "lambda",
+        [identifiers.args]: [],
+        [identifiers._return]: parseFunction(),
+      };
     }
+    if (str[i] == "(") return parseArguments();
+
     if (!isAlpha(str[i])) return undefined;
     const path = parsePath();
     if (path == "true") return true;
     if (path == "false") return false;
     if (path == "null") return null;
-    const props = parseProps();
-    if (props === undefined) return { ":type": "prop", path };
-    return { ":type": "function", path, props };
+    const args = parseProps();
+    if (args === undefined)
+      return {
+        [identifiers.type]: identifiers._prop,
+        [identifiers.path]: path,
+      };
+    return {
+      [identifiers.type]: identifiers._invoker,
+      [identifiers.path]: path,
+      [identifiers.args]: args,
+    };
   }
 
   function skipWhitespace() {

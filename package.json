@@ -41,7 +41,11 @@
     "tsconfig-paths": "^3.9.0",
     "typescript": "^3.9.5"
   },
-  "dependencies": {},
+  "dependencies": {
+    "js-tokens": "^7.0.0",
+    "micromark": "^2.11.4",
+    "natural": "^5.0.3"
+  },
   "files": [
     "dist",
     "test",
