@@ -90,16 +90,19 @@ test("it should work with one function", () => {
 test("it should work with one function and correctly response", () => {
   const str = `map()`;
   expect(JSOF.parse(str)).toEqual({
-    ":type": "function",
-    path: "map",
-    props: [],
+    _type: "invoker",
+    into: {
+      _type: "prop",
+      path: "map",
+    },
+    args: [],
   });
 });
 
 test("it should work with one 'prop' and correctly response", () => {
   const str = `props.foo.bar`;
   expect(JSOF.parse(str)).toEqual({
-    ":type": "prop",
+    _type: "prop",
     path: "props.foo.bar",
   });
 });

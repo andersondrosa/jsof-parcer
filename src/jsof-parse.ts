@@ -6,6 +6,45 @@ const isAhoba = (char) => char && /^[@]+$/i.test(char);
 const isAlphaNum = (char) => char && /^[a-zA-Z_$0-9]+$/i.test(char);
 const isReservedKey = (key) => ["true", "false", "null"].includes(key);
 
+class GroupOfValues {
+  values: any;
+  constructor(values) {
+    this.values = values;
+  }
+  last() {
+    return this.values[this.values.length - 1];
+  }
+}
+
+function isGroup(x) {
+  return x instanceof GroupOfValues;
+}
+
+function getGroupValues(group) {
+  return group.values;
+}
+
+function args(x) {
+  if (x instanceof GroupOfValues) {
+    return x.values;
+  }
+  return [x];
+}
+function _value(x) {
+  if (x instanceof GroupOfValues) {
+    return x.values;
+  }
+  return x;
+}
+
+function invoker(into, args) {
+  return {
+    [identifiers.type]: identifiers._invoker,
+    [identifiers.into]: into,
+    [identifiers.args]: args,
+  };
+}
+
 function JsofParse(text: String | Object) {
   //
   if (typeof text == "object") {
@@ -22,6 +61,8 @@ function JsofParse(text: String | Object) {
   const value = parseValue();
 
   expectEndOfInput();
+
+  if (isGroup(value)) return value.last();
 
   return value;
 
@@ -48,7 +89,7 @@ function JsofParse(text: String | Object) {
         skipWhitespace();
         eatColon();
         const value = parseValue();
-        result[key] = value;
+        result[key] = isGroup(value) ? value.last() : value;
         initial = false;
 
         if (str[i] == ",") {
@@ -108,16 +149,37 @@ function JsofParse(text: String | Object) {
     }
   }
 
-  function parseValue() {
+  function parseValidValue() {
     skipWhitespace();
-    const value =
+    const response =
       parseString() ??
       parseNumber() ??
       parseObject() ??
       parseArray() ??
+      parseArguments() ??
       parseFunction();
     skipWhitespace();
-    return value;
+    return response;
+  }
+
+  function parseValue() {
+    //
+    let response: any = parseValidValue();
+
+    let sequence = parseNextArrow();
+
+    if (sequence) {
+      while (sequence) {
+        let { value, next } = sequence;
+
+        if (!value || !value._type) unexpectedToken(value);
+
+        response = invoker(value, args(response));
+        sequence = next;
+      }
+    }
+
+    return response;
   }
 
   function parseKey() {
@@ -184,40 +246,114 @@ function JsofParse(text: String | Object) {
       }
       if (str[i] === ")") {
         i++;
-        return props;
+        const next = parseProps();
+        return { props, next };
       }
       unexpectedToken(str[i]);
     }
+  }
+
+  function parseArgumentKeys() {
+    const initial_i = i;
+
+    skipWhitespace();
+    const key = parseKey();
+    if (!key) {
+      if (str[i] == ")") return [];
+      return;
+    }
+
+    const keys = [key];
+    while (true) {
+      skipWhitespace();
+      if (str[i] === ",") eatComma();
+      skipWhitespace();
+
+      const key = parseKey();
+      if (!key) {
+        if (str[i] == ")") break;
+        i = initial_i;
+        return;
+      }
+      keys.push(key);
+      skipWhitespace();
+    }
+    return keys;
+  }
+
+  function parseGroupValues() {
+    const values = [];
+    while (true) {
+      skipWhitespace();
+
+      const value = _value(parseValue());
+      if (!value) {
+        if (str[i] == ")") break;
+        return;
+      }
+      values.push(value);
+      skipWhitespace();
+      if (str[i] === ",") eatComma();
+    }
+    return values;
+  }
+
+  function _prop(key) {
+    return {
+      [identifiers.type]: identifiers._prop,
+      [identifiers.path]: key,
+    };
   }
 
   function parseArguments() {
     if (str[i] !== "(") return;
     i++;
     skipWhitespace();
-    const keys = [];
-    while (true) {
-      const key = parseKey();
-      if (!key) break;
-      keys.push(key);
+
+    let keys = parseArgumentKeys();
+    if (keys != null) {
+      if (str[i] == ")") i++;
       skipWhitespace();
-      if (str[i] === ",") eatComma();
-      skipWhitespace();
+
+      // Se encontrou "=>" combina com os argumentos "keys" e pode continuar
+      if (str[i] + str[i + 1] === "=>") {
+        i += 2;
+        skipWhitespace();
+        const value = _value(parseValue());
+        return {
+          [identifiers.type]: identifiers._lambda,
+          [identifiers.args]: keys,
+          [identifiers._return]: value,
+        };
+      }
+
+      // (x, y) |> ...
+      if (keys.length == 1) return _prop(keys[0]);
+      return new GroupOfValues(keys.map(_prop));
     }
+
+    // se retornou nulo é pq não é argumento de lambda (...) => ""
+    // procurar por valores em um grupo comum (...)
+    const values = parseGroupValues();
     if (str[i] == ")") i++;
+
+    if (values.length == 1) return values[0];
+
+    return new GroupOfValues(values);
+  }
+
+  function parseNextArrow() {
     skipWhitespace();
+    if (str[i] == "|" && str[i + 1] == ">") {
+      i += 2;
+      skipWhitespace();
 
-    if (str[i] + str[i + 1] !== "=>") unexpectedToken(str[i]);
-    i += 2;
+      const value: any = parseValidValue();
 
-    skipWhitespace();
+      const next = parseNextArrow();
 
-    const fn = parseValue();
-
-    return {
-      [identifiers.type]: identifiers._lambda,
-      [identifiers.args]: keys,
-      [identifiers._return]: fn,
-    };
+      return { value, next };
+    }
   }
 
   function parseFunction() {
@@ -229,24 +365,45 @@ function JsofParse(text: String | Object) {
         [identifiers._return]: parseFunction(),
       };
     }
-    if (str[i] == "(") return parseArguments();
+    // if (str[i] == "(") return parseArguments();
 
     if (!isAlpha(str[i])) return undefined;
     const path = parsePath();
+
     if (path == "true") return true;
     if (path == "false") return false;
     if (path == "null") return null;
+
     const args = parseProps();
-    if (args === undefined)
-      return {
-        [identifiers.type]: identifiers._prop,
-        [identifiers.path]: path,
-      };
-    return {
-      [identifiers.type]: identifiers._invoker,
-      [identifiers.path]: path,
-      [identifiers.args]: args,
+    if (args === undefined) {
+      skipWhitespace();
+      if (str[i] + str[i + 1] == "=>") {
+        i += 2;
+        const value = _value(parseValue());
+        return {
+          [identifiers.type]: identifiers._lambda,
+          [identifiers.args]: [path],
+          [identifiers._return]: value,
+        };
+      }
+      return _prop(path);
+    }
+
+    if (!args.next) return invoker(_prop(path), args.props);
+
+    const getInvoker = (data, last) => {
+      if (!data.next) return last;
+      const intoInvoker = last ? last : invoker(_prop(path), data.props);
+      return getInvoker(
+        data.next,
+        invoker(
+          intoInvoker, //
+          data.next.props
+        )
+      );
     };
+
+    return getInvoker(args, null);
   }
 
   function skipWhitespace() {
@@ -443,7 +600,7 @@ ${" ".repeat(strSoFar.length + 1)}^^^^^^`);
       " ".repeat(padding) + "^",
       " ".repeat(padding) + message,
     ].join("\n");
-    console.log(snippet);
+    // console.log(snippet);
   }
 }
 

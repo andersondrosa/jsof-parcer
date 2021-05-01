@@ -4,73 +4,73 @@ test("it should work", () => {
   //
   const object = {
     pipeFunction: {
-      ":type": "function",
+      "_type": "invoker",
       path: "pipe",
-      props: [
+      args: [
         {
-          ":type": "function",
+          "_type": "invoker",
           path: "branch",
-          props: [
+          args: [
             {
-              ":type": "function",
+              "_type": "invoker",
               path: "put",
-              props: ["inputted-data"],
+              args: ["inputted-data"],
             },
             {
-              ":type": "function",
+              "_type": "invoker",
               path: "set",
-              props: ["test"],
+              args: ["test"],
             },
           ],
         },
         {
-          ":type": "function",
+          "_type": "invoker",
           path: "context",
-          props: [
+          args: [
             {
-              ":type": "function",
+              "_type": "invoker",
               path: "branch",
-              props: [
+              args: [
                 {
-                  ":type": "function",
+                  "_type": "invoker",
                   path: "get",
-                  props: ["test"],
+                  args: ["test"],
                 },
                 {
-                  ":type": "function",
+                  "_type": "invoker",
                   path: "log",
-                  props: ["test"],
+                  args: ["test"],
                 },
               ],
             },
             {
-              ":type": "function",
+              "_type": "invoker",
               path: "branch",
-              props: [
+              args: [
                 {
-                  ":type": "function",
+                  "_type": "invoker",
                   path: "get",
-                  props: [
+                  args: [
                     "root.{x}",
                     {
                       x: {
-                        ":type": "function",
+                        "_type": "invoker",
                         path: "get",
-                        props: ["value"],
+                        args: ["value"],
                       },
                     },
                   ],
                 },
                 {
-                  ":type": "function",
+                  "_type": "invoker",
                   path: "set",
-                  props: [
+                  args: [
                     "_.{x}",
                     {
                       x: {
-                        ":type": "function",
+                        "_type": "invoker",
                         path: "get",
-                        props: ["path"],
+                        args: ["path"],
                       },
                     },
                   ],
@@ -78,28 +78,28 @@ test("it should work", () => {
               ],
             },
             {
-              ":type": "function",
+              "_type": "invoker",
               path: "branch",
-              props: [
+              args: [
                 {
-                  ":type": "function",
+                  "_type": "invoker",
                   path: "compose",
-                  props: [
+                  args: [
                     {
-                      ":type": "function",
+                      "_type": "invoker",
                       path: "set",
-                      props: ["next"],
+                      args: ["next"],
                     },
                     {
-                      ":type": "function",
+                      "_type": "invoker",
                       path: "pipe",
-                      props: [
+                      args: [
                         {
-                          ":type": "prop",
+                          "_type": "prop",
                           path: "json",
                         },
                         {
-                          ":type": "prop",
+                          "_type": "prop",
                           path: "hash",
                         },
                       ],
@@ -109,32 +109,32 @@ test("it should work", () => {
               ],
             },
             {
-              ":type": "function",
+              "_type": "invoker",
               path: "branch",
-              props: [
+              args: [
                 {
-                  ":type": "function",
+                  "_type": "invoker",
                   path: "get",
-                  props: ["next"],
+                  args: ["next"],
                 },
                 {
-                  ":type": "function",
+                  "_type": "invoker",
                   path: "log",
-                  props: ["NEXT"],
+                  args: ["NEXT"],
                 },
               ],
             },
             {
-              ":type": "function",
+              "_type": "invoker",
               path: "map",
-              props: [
+              args: [
                 {
-                  ":type": "function",
+                  "_type": "invoker",
                   path: "matchIn",
-                  props: [
+                  args: [
                     {
                       key: {
-                        ":type": "prop",
+                        "_type": "prop",
                         path: "lower",
                       },
                     },
@@ -143,9 +143,9 @@ test("it should work", () => {
               ],
             },
             {
-              ":type": "function",
+              "_type": "invoker",
               path: "log",
-              props: ["OUTPUT"],
+              args: ["OUTPUT"],
             },
           ],
         },

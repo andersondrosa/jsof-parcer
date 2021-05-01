@@ -1,5 +1,6 @@
 const identifiers = {
   type: "_type",
+  into: "into",
   path: "path",
   args: "args",
   _return: "return",

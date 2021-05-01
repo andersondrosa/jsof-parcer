@@ -16,39 +16,48 @@ Object {
     ],
   ],
   "function": Object {
-    ":type": "function",
-    "path": "myCustomFunction",
-    "props": Array [
+    "_type": "invoker",
+    "args": Array [
       Object {
-        ":type": "prop",
+        "_type": "prop",
         "path": "props.foo",
       },
       Object {
-        ":type": "prop",
+        "_type": "prop",
         "path": "props.bar",
       },
     ],
+    "into": Object {
+      "_type": "prop",
+      "path": "myCustomFunction",
+    },
   },
   "label": "My functional json",
   "nested": Object {
     "foo": Object {
       "bar": Object {
-        ":type": "function",
-        "path": "baz",
-        "props": Array [
+        "_type": "invoker",
+        "args": Array [
           "lorem",
           Object {
-            ":type": "function",
-            "path": "ipsum.dolor",
-            "props": Array [
+            "_type": "invoker",
+            "args": Array [
               Array [
                 1,
                 2,
                 3,
               ],
             ],
+            "into": Object {
+              "_type": "prop",
+              "path": "ipsum.dolor",
+            },
           },
         ],
+        "into": Object {
+          "_type": "prop",
+          "path": "baz",
+        },
       },
     },
   },
