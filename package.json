@@ -1,6 +1,6 @@
 {
   "name": "jsof-parser",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "main": "dist/index.js",
   "author": "Anderson D. Rosa <andersondrosa@outlook.com>",
   "license": "MIT",
@@ -44,7 +44,8 @@
   "dependencies": {
     "js-tokens": "^7.0.0",
     "micromark": "^2.11.4",
-    "natural": "^5.0.3"
+    "natural": "^5.0.3",
+    "strip-json-comments": "^3.1.1"
   },
   "files": [
     "dist",

@@ -1,5 +1,5 @@
+import stripJsonComments from "strip-json-comments";
 import identifiers from "./identifiers";
-import removeComments from "./utils/removeComments";
 
 const isAlpha = (char) => char && /^[a-zA-Z_$]+$/i.test(char);
 const isAhoba = (char) => char && /^[@]+$/i.test(char);
@@ -56,7 +56,7 @@ function JsofParse(text: String | Object) {
 
   let i = 0;
 
-  let str = removeComments(text);
+  let str = stripJsonComments(text);
 
   const value = parseValue();
 
@@ -178,6 +178,10 @@ function JsofParse(text: String | Object) {
         sequence = next;
       }
     }
+
+    const nextCalls = parseNextCalls(response);
+
+    if (nextCalls) return nextCalls;
 
     return response;
   }
@@ -309,8 +313,8 @@ function JsofParse(text: String | Object) {
     if (str[i] !== "(") return;
     i++;
     skipWhitespace();
-
     let keys = parseArgumentKeys();
+
     if (keys != null) {
       if (str[i] == ")") i++;
       skipWhitespace();
@@ -331,13 +335,14 @@ function JsofParse(text: String | Object) {
       if (keys.length == 1) return _prop(keys[0]);
       return new GroupOfValues(keys.map(_prop));
     }
-
     // se retornou nulo é pq não é argumento de lambda (...) => ""
     // procurar por valores em um grupo comum (...)
     const values = parseGroupValues();
     if (str[i] == ")") i++;
 
-    if (values.length == 1) return values[0];
+    if (values.length == 1) {
+      return values[0];
+    }
 
     return new GroupOfValues(values);
   }
@@ -356,6 +361,30 @@ function JsofParse(text: String | Object) {
     }
   }
 
+  function parseNextCalls(fn) {
+    skipWhitespace();
+    if (str[i] != "(") return;
+    
+    const args = parseProps();
+    if (args === undefined) return;
+
+    if (!args.next) return invoker(fn, args.props);
+
+    const getInvoker = (data, last) => {
+      if (!data.next) return last;
+      const intoInvoker = last ? last : invoker(fn, data.props);
+      return getInvoker(
+        data.next,
+        invoker(
+          intoInvoker, //
+          data.next.props
+        )
+      );
+    };
+
+    return getInvoker(args, null);
+  }
+
   function parseFunction() {
     if (str[i] == "@") {
       i++;
@@ -365,7 +394,6 @@ function JsofParse(text: String | Object) {
         [identifiers._return]: parseFunction(),
       };
     }
-    // if (str[i] == "(") return parseArguments();
 
     if (!isAlpha(str[i])) return undefined;
     const path = parsePath();
@@ -375,6 +403,7 @@ function JsofParse(text: String | Object) {
     if (path == "null") return null;
 
     const args = parseProps();
+
     if (args === undefined) {
       skipWhitespace();
       if (str[i] + str[i + 1] == "=>") {
