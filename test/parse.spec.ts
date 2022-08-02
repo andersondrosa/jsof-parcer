@@ -97,6 +97,16 @@ test("it should work with one function and correctly response", () => {
     },
     args: [],
   });
+  expect(
+    JSOF.stringify({
+      _type: "invoker",
+      into: {
+        _type: "prop",
+        path: "map",
+      },
+      args: [],
+    })
+  ).toEqual("map()");
 });
 
 test("it should work with one 'prop' and correctly response", () => {

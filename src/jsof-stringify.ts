@@ -1,3 +1,4 @@
+import getCode from "./build/getCode";
 import identifiers from "./identifiers";
 import typeOf from "./utils/typeOf";
 
@@ -63,4 +64,9 @@ function JsofStringify(data) {
   return `{${row.join()}}`;
 }
 
-export default JsofStringify;
+function stringify(data, verbose = false) {
+  const { code, deps } = getCode(data);
+  return verbose ? { code, deps } : code;
+}
+
+export default stringify;
