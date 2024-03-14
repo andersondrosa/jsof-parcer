@@ -7,6 +7,7 @@ const identifiers = {
   _invoker: "invoker",
   _prop: "prop",
   _lambda: "lambda",
+  _function: "function",
 };
 
 export default identifiers;

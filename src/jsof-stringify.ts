@@ -2,21 +2,21 @@ import getCode from "./build/getCode";
 import identifiers from "./identifiers";
 import typeOf from "./utils/typeOf";
 
-const isFunc = (x) =>
+const isInvoker = (x) =>
   typeOf(x) == "object" && x[identifiers.type] == identifiers._invoker;
 
 const isVar = (x) =>
   typeOf(x) == "object" && x[identifiers.type] == identifiers._prop;
 
-function getFunction(data) {
+function getFunction(data: any) {
   //
-  const path = data[identifiers.path];
+  const path: string = data[identifiers.path];
 
   // if (path == "json") return data;
 
-  const props = data[identifiers.args];
+  const props: any = data[identifiers.args];
 
-  const _props = [];
+  const _props: any[] = [];
 
   for (const i in props) {
     _props.push(JsofStringify(props[i]));
@@ -29,7 +29,7 @@ function getPath(data) {
   return data[identifiers.path];
 }
 
-function JsofStringify(data) {
+function JsofStringify(data: any) {
   //
   if (data === null) return "null";
 
@@ -37,7 +37,7 @@ function JsofStringify(data) {
     return typeof data === "string" ? JSON.stringify(data) : data;
   }
 
-  if (isFunc(data)) {
+  if (isInvoker(data)) {
     return getFunction(data);
   }
 
@@ -46,7 +46,7 @@ function JsofStringify(data) {
   }
 
   if (typeOf(data) === "array") {
-    const arr = [];
+    const arr: any[] = [];
 
     for (const i in data) {
       arr.push(JsofStringify(data[i]));
@@ -55,7 +55,7 @@ function JsofStringify(data) {
     return `[${arr.join(",")}]`;
   }
 
-  const row = [];
+  const row: any[] = [];
 
   for (const key in data) {
     row.push(`"${key}": ${JsofStringify(data[key])}`);
