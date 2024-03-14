@@ -37,9 +37,9 @@ function _value(x) {
   return x;
 }
 
-function invoker(into, args) {
+function caller(into, args) {
   return {
-    [identifiers.type]: identifiers._invoker,
+    [identifiers.type]: identifiers._caller,
     [identifiers.into]: into,
     [identifiers.args]: args,
   };
@@ -174,7 +174,7 @@ function JsofParse(text: String | Object) {
 
         if (!value || !value._type) unexpectedToken(value);
 
-        response = invoker(value, args(response));
+        response = caller(value, args(response));
         sequence = next;
       }
     }
@@ -368,14 +368,14 @@ function JsofParse(text: String | Object) {
     const args = parseProps();
     if (args === undefined) return;
 
-    if (!args.next) return invoker(fn, args.props);
+    if (!args.next) return caller(fn, args.props);
 
     const getInvoker = (data, last) => {
       if (!data.next) return last;
-      const intoInvoker = last ? last : invoker(fn, data.props);
+      const intoInvoker = last ? last : caller(fn, data.props);
       return getInvoker(
         data.next,
-        invoker(
+        caller(
           intoInvoker, //
           data.next.props
         )
@@ -418,14 +418,14 @@ function JsofParse(text: String | Object) {
       return _prop(path);
     }
 
-    if (!args.next) return invoker(_prop(path), args.props);
+    if (!args.next) return caller(_prop(path), args.props);
 
     const getInvoker = (data, last) => {
       if (!data.next) return last;
-      const intoInvoker = last ? last : invoker(_prop(path), data.props);
+      const intoInvoker = last ? last : caller(_prop(path), data.props);
       return getInvoker(
         data.next,
-        invoker(
+        caller(
           intoInvoker, //
           data.next.props
         )

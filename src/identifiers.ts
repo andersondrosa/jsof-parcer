@@ -4,7 +4,7 @@ const identifiers = {
   path: "path",
   args: "args",
   _return: "return",
-  _invoker: "invoker",
+  _caller: "caller",
   _prop: "prop",
   _lambda: "lambda",
   _function: "function",

@@ -2,7 +2,7 @@
 
 exports[`to match snapshot 1`] = `
 {
-  "_type": "invoker",
+  "_type": "caller",
   "args": [
     {
       "_type": "lambda",
@@ -10,7 +10,7 @@ exports[`to match snapshot 1`] = `
         "x",
       ],
       "return": {
-        "_type": "invoker",
+        "_type": "caller",
         "args": [
           {
             "_type": "prop",
@@ -18,10 +18,10 @@ exports[`to match snapshot 1`] = `
           },
         ],
         "into": {
-          "_type": "invoker",
+          "_type": "caller",
           "args": [
             {
-              "_type": "invoker",
+              "_type": "caller",
               "args": [
                 {
                   "_type": "lambda",
@@ -30,7 +30,7 @@ exports[`to match snapshot 1`] = `
                     "y",
                   ],
                   "return": {
-                    "_type": "invoker",
+                    "_type": "caller",
                     "args": [
                       {
                         "_type": "prop",
@@ -49,7 +49,7 @@ exports[`to match snapshot 1`] = `
                 },
               ],
               "into": {
-                "_type": "invoker",
+                "_type": "caller",
                 "args": [
                   "calc",
                 ],
@@ -60,7 +60,7 @@ exports[`to match snapshot 1`] = `
               },
             },
             {
-              "_type": "invoker",
+              "_type": "caller",
               "args": [
                 {
                   "_type": "lambda",
@@ -68,7 +68,7 @@ exports[`to match snapshot 1`] = `
                     "x",
                   ],
                   "return": {
-                    "_type": "invoker",
+                    "_type": "caller",
                     "args": [
                       {
                         "_type": "prop",
@@ -83,7 +83,7 @@ exports[`to match snapshot 1`] = `
                 },
               ],
               "into": {
-                "_type": "invoker",
+                "_type": "caller",
                 "args": [
                   "upper",
                 ],
@@ -94,7 +94,7 @@ exports[`to match snapshot 1`] = `
               },
             },
             {
-              "_type": "invoker",
+              "_type": "caller",
               "args": [
                 {
                   "_type": "lambda",
@@ -102,7 +102,7 @@ exports[`to match snapshot 1`] = `
                     "m",
                   ],
                   "return": {
-                    "_type": "invoker",
+                    "_type": "caller",
                     "args": [
                       {
                         "_type": "prop",
@@ -117,7 +117,7 @@ exports[`to match snapshot 1`] = `
                 },
               ],
               "into": {
-                "_type": "invoker",
+                "_type": "caller",
                 "args": [
                   "Error",
                 ],
@@ -128,16 +128,16 @@ exports[`to match snapshot 1`] = `
               },
             },
             {
-              "_type": "invoker",
+              "_type": "caller",
               "args": [
                 {
                   "_type": "lambda",
                   "args": [],
                   "return": {
-                    "_type": "invoker",
+                    "_type": "caller",
                     "args": [
                       {
-                        "_type": "invoker",
+                        "_type": "caller",
                         "args": [
                           "MockedFunctionJson",
                         ],
@@ -148,7 +148,7 @@ exports[`to match snapshot 1`] = `
                       },
                     ],
                     "into": {
-                      "_type": "invoker",
+                      "_type": "caller",
                       "args": [
                         "CreateFunctionByJson",
                       ],
@@ -161,7 +161,7 @@ exports[`to match snapshot 1`] = `
                 },
               ],
               "into": {
-                "_type": "invoker",
+                "_type": "caller",
                 "args": [
                   "composedFunctionToUpper",
                 ],
@@ -172,7 +172,7 @@ exports[`to match snapshot 1`] = `
               },
             },
             {
-              "_type": "invoker",
+              "_type": "caller",
               "args": [
                 [
                   "alpha",
@@ -181,7 +181,7 @@ exports[`to match snapshot 1`] = `
                 ],
               ],
               "into": {
-                "_type": "invoker",
+                "_type": "caller",
                 "args": [
                   "data",
                 ],
@@ -192,13 +192,13 @@ exports[`to match snapshot 1`] = `
               },
             },
             {
-              "_type": "invoker",
+              "_type": "caller",
               "args": [
                 {
-                  "_type": "invoker",
+                  "_type": "caller",
                   "args": [
                     {
-                      "_type": "invoker",
+                      "_type": "caller",
                       "args": [
                         {
                           "_type": "prop",
@@ -218,7 +218,7 @@ exports[`to match snapshot 1`] = `
                 },
               ],
               "into": {
-                "_type": "invoker",
+                "_type": "caller",
                 "args": [
                   "MockedFunctionJson",
                 ],
@@ -229,7 +229,7 @@ exports[`to match snapshot 1`] = `
               },
             },
             {
-              "_type": "invoker",
+              "_type": "caller",
               "args": [
                 {
                   "_type": "lambda",
@@ -237,7 +237,7 @@ exports[`to match snapshot 1`] = `
                     "json",
                   ],
                   "return": {
-                    "_type": "invoker",
+                    "_type": "caller",
                     "args": [
                       {
                         "_type": "prop",
@@ -252,7 +252,7 @@ exports[`to match snapshot 1`] = `
                 },
               ],
               "into": {
-                "_type": "invoker",
+                "_type": "caller",
                 "args": [
                   "CreateFunctionByJson",
                 ],
@@ -263,7 +263,7 @@ exports[`to match snapshot 1`] = `
               },
             },
             {
-              "_type": "invoker",
+              "_type": "caller",
               "args": [
                 "composedFunctionToUpper",
               ],
@@ -278,13 +278,13 @@ exports[`to match snapshot 1`] = `
                 "fn",
               ],
               "return": {
-                "_type": "invoker",
+                "_type": "caller",
                 "args": [
                   {
-                    "_type": "invoker",
+                    "_type": "caller",
                     "args": [
                       {
-                        "_type": "invoker",
+                        "_type": "caller",
                         "args": [
                           "data",
                         ],
@@ -301,7 +301,7 @@ exports[`to match snapshot 1`] = `
                   },
                 ],
                 "into": {
-                  "_type": "invoker",
+                  "_type": "caller",
                   "args": [
                     "data",
                   ],
@@ -313,15 +313,15 @@ exports[`to match snapshot 1`] = `
               },
             },
             {
-              "_type": "invoker",
+              "_type": "caller",
               "args": [
                 {
-                  "_type": "invoker",
+                  "_type": "caller",
                   "args": [
                     "example",
                   ],
                   "into": {
-                    "_type": "invoker",
+                    "_type": "caller",
                     "args": [
                       "upper",
                     ],
@@ -343,10 +343,10 @@ exports[`to match snapshot 1`] = `
                 "x",
               ],
               "return": {
-                "_type": "invoker",
+                "_type": "caller",
                 "args": [
                   {
-                    "_type": "invoker",
+                    "_type": "caller",
                     "args": [
                       {
                         "_type": "prop",
@@ -366,10 +366,10 @@ exports[`to match snapshot 1`] = `
               },
             },
             {
-              "_type": "invoker",
+              "_type": "caller",
               "args": [
                 {
-                  "_type": "invoker",
+                  "_type": "caller",
                   "args": [
                     "data",
                   ],
@@ -385,15 +385,15 @@ exports[`to match snapshot 1`] = `
               },
             },
             {
-              "_type": "invoker",
+              "_type": "caller",
               "args": [
                 {
-                  "_type": "invoker",
+                  "_type": "caller",
                   "args": [
                     "TEST ERROR 1",
                   ],
                   "into": {
-                    "_type": "invoker",
+                    "_type": "caller",
                     "args": [
                       "Error",
                     ],
@@ -414,7 +414,7 @@ exports[`to match snapshot 1`] = `
               },
             },
             {
-              "_type": "invoker",
+              "_type": "caller",
               "args": [
                 "acc",
                 {
@@ -424,17 +424,17 @@ exports[`to match snapshot 1`] = `
                     "x",
                   ],
                   "return": {
-                    "_type": "invoker",
+                    "_type": "caller",
                     "args": [
                       {
                         "_type": "prop",
                         "path": "acc",
                       },
                       {
-                        "_type": "invoker",
+                        "_type": "caller",
                         "args": [
                           {
-                            "_type": "invoker",
+                            "_type": "caller",
                             "args": [
                               {
                                 "_type": "prop",
@@ -466,10 +466,10 @@ exports[`to match snapshot 1`] = `
               },
             },
             {
-              "_type": "invoker",
+              "_type": "caller",
               "args": [
                 {
-                  "_type": "invoker",
+                  "_type": "caller",
                   "args": [
                     "acc",
                   ],
@@ -486,7 +486,7 @@ exports[`to match snapshot 1`] = `
               },
             },
             {
-              "_type": "invoker",
+              "_type": "caller",
               "args": [
                 {
                   "_type": "lambda",
@@ -494,7 +494,7 @@ exports[`to match snapshot 1`] = `
                     "x",
                   ],
                   "return": {
-                    "_type": "invoker",
+                    "_type": "caller",
                     "args": [
                       {
                         "_type": "prop",

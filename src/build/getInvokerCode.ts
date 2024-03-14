@@ -5,7 +5,7 @@ import identifiers from "../identifiers";
 function getInvokerCode(data) {
   const args = data[identifiers.args];
 
-  if (!data.into) throw Error("Invalid invoker type");
+  if (!data.into) throw Error("Invalid caller type");
 
   if (data.into._type == "prop" && data.into.path == "mock") {
     return {

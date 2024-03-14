@@ -92,7 +92,7 @@ describe("", () => {
   it("it should work with one function and correctly response", () => {
     const str = `map()`;
     expect(JSOF.parse(str)).toEqual({
-      _type: "invoker",
+      _type: "caller",
       into: {
         _type: "prop",
         path: "map",
@@ -101,7 +101,7 @@ describe("", () => {
     });
     expect(
       JSOF.stringify({
-        _type: "invoker",
+        _type: "caller",
         into: {
           _type: "prop",
           path: "map",

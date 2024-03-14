@@ -1,7 +1,7 @@
 import identifiers from "../identifiers";
 import { parseReservedKey } from "../reservedKeys";
 
-const types = { invoker: true, lambda: true, prop: true };
+const types = { caller: true, lambda: true, prop: true };
 
 export function isObject(x) {
   return Object.prototype.toString.call(x) === "[object Object]";
@@ -20,7 +20,7 @@ export const isMetaObject = (x) => isObject(x) && types[x[identifiers.type]];
 export const getMetaType = (x) => (x ? x[identifiers.type] : null);
 export const getMetaArgs = (x) => (x ? x[identifiers.args] : []);
 
-export const isInvoker = (x) => x[identifiers.type] == identifiers._invoker;
+export const isInvoker = (x) => x[identifiers.type] == identifiers._caller;
 
 export const isLambda = (x) => x[identifiers.type] == identifiers._lambda;
 

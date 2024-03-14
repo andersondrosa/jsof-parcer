@@ -7,57 +7,57 @@ describe("Desc", () => {
     //
     const object = {
       pipeFunction: {
-        _type: "invoker",
+        _type: "caller",
         into: { _type: "prop", path: "pipe" },
         args: [
           {
-            _type: "invoker",
+            _type: "caller",
             into: { _type: "prop", path: "branch" },
             args: [
               {
-                _type: "invoker",
+                _type: "caller",
                 into: { _type: "prop", path: "put" },
                 args: ["inputted-data"],
               },
               {
-                _type: "invoker",
+                _type: "caller",
                 into: { _type: "prop", path: "set" },
                 args: ["test"],
               },
             ],
           },
           {
-            _type: "invoker",
+            _type: "caller",
             into: { _type: "prop", path: "context" },
             args: [
               {
-                _type: "invoker",
+                _type: "caller",
                 into: { _type: "prop", path: "branch" },
                 args: [
                   {
-                    _type: "invoker",
+                    _type: "caller",
                     into: { _type: "prop", path: "get" },
                     args: ["test"],
                   },
                   {
-                    _type: "invoker",
+                    _type: "caller",
                     into: { _type: "prop", path: "log" },
                     args: ["test"],
                   },
                 ],
               },
               {
-                _type: "invoker",
+                _type: "caller",
                 into: { _type: "prop", path: "branch" },
                 args: [
                   {
-                    _type: "invoker",
+                    _type: "caller",
                     into: { _type: "prop", path: "get" },
                     args: [
                       "root.{x}",
                       {
                         x: {
-                          _type: "invoker",
+                          _type: "caller",
                           into: { _type: "prop", path: "get" },
                           args: ["value"],
                         },
@@ -65,13 +65,13 @@ describe("Desc", () => {
                     ],
                   },
                   {
-                    _type: "invoker",
+                    _type: "caller",
                     into: { _type: "prop", path: "set" },
                     args: [
                       "_.{x}",
                       {
                         x: {
-                          _type: "invoker",
+                          _type: "caller",
                           into: { _type: "prop", path: "get" },
                           args: ["path"],
                         },
@@ -81,20 +81,20 @@ describe("Desc", () => {
                 ],
               },
               {
-                _type: "invoker",
+                _type: "caller",
                 into: { _type: "prop", path: "branch" },
                 args: [
                   {
-                    _type: "invoker",
+                    _type: "caller",
                     into: { _type: "prop", path: "compose" },
                     args: [
                       {
-                        _type: "invoker",
+                        _type: "caller",
                         into: { _type: "prop", path: "set" },
                         args: ["next"],
                       },
                       {
-                        _type: "invoker",
+                        _type: "caller",
                         into: { _type: "prop", path: "pipe" },
                         args: [
                           {
@@ -112,27 +112,27 @@ describe("Desc", () => {
                 ],
               },
               {
-                _type: "invoker",
+                _type: "caller",
                 into: { _type: "prop", path: "branch" },
                 args: [
                   {
-                    _type: "invoker",
+                    _type: "caller",
                     into: { _type: "prop", path: "get" },
                     args: ["next"],
                   },
                   {
-                    _type: "invoker",
+                    _type: "caller",
                     into: { _type: "prop", path: "log" },
                     args: ["NEXT"],
                   },
                 ],
               },
               {
-                _type: "invoker",
+                _type: "caller",
                 into: { _type: "prop", path: "map" },
                 args: [
                   {
-                    _type: "invoker",
+                    _type: "caller",
                     into: { _type: "prop", path: "matchIn" },
                     args: [
                       {
@@ -146,7 +146,7 @@ describe("Desc", () => {
                 ],
               },
               {
-                _type: "invoker",
+                _type: "caller",
                 into: { _type: "prop", path: "log" },
                 args: ["OUTPUT"],
               },

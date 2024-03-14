@@ -3,7 +3,7 @@ import identifiers from "./identifiers";
 import typeOf from "./utils/typeOf";
 
 const isInvoker = (x) =>
-  typeOf(x) == "object" && x[identifiers.type] == identifiers._invoker;
+  typeOf(x) == "object" && x[identifiers.type] == identifiers._caller;
 
 const isVar = (x) =>
   typeOf(x) == "object" && x[identifiers.type] == identifiers._prop;

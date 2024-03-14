@@ -16,7 +16,7 @@ exports[`it should work 1`] = `
     ],
   ],
   "function": {
-    "_type": "invoker",
+    "_type": "caller",
     "args": [
       {
         "_type": "prop",
@@ -36,11 +36,11 @@ exports[`it should work 1`] = `
   "nested": {
     "foo": {
       "bar": {
-        "_type": "invoker",
+        "_type": "caller",
         "args": [
           "lorem",
           {
-            "_type": "invoker",
+            "_type": "caller",
             "args": [
               [
                 1,
