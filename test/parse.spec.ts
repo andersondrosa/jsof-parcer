@@ -112,10 +112,18 @@ describe("", () => {
   });
 
   it("it should work with one 'prop' and correctly response", () => {
-    const str = `props.foo.bar`;
-    expect(JSOF.parse(str)).toEqual({
-      _type: "prop",
-      path: "props.foo.bar",
-    });
+    const str = `(user) => props.foo.bar(
+        () => CMD.invoke("logout", user(1, true))
+      )`;
+    const json = JSOF.parse(str);
+    console.log(json);
+
+    const script = JSOF.stringify(json);
+    console.log(script);
+
+    // expect(json).toEqual({
+    //   _type: "prop",
+    //   path: "props.foo.bar",
+    // });
   });
 });

@@ -71,7 +71,7 @@ function JsofParse(text: String | Object) {
       i++;
       skipWhitespace();
 
-      const result = {};
+      const result: any = {};
 
       let initial = true;
       // if it is not '}',
@@ -89,7 +89,7 @@ function JsofParse(text: String | Object) {
         skipWhitespace();
         eatColon();
         const value = parseValue();
-        result[key] = isGroup(value) ? value.last() : value;
+        result[String(key)] = isGroup(value) ? value.last() : value;
         initial = false;
 
         if (str[i] == ",") {
@@ -116,7 +116,7 @@ function JsofParse(text: String | Object) {
       i++;
       skipWhitespace();
 
-      const result = [];
+      const result: any[] = [];
       let initial = true;
       let commas = 1;
       while (i < str.length) {
@@ -203,7 +203,7 @@ function JsofParse(text: String | Object) {
   }
 
   function parsePath() {
-    const keys = [];
+    const keys: string[] = [];
     let init = true;
     while (i <= str.length) {
       //
@@ -237,7 +237,7 @@ function JsofParse(text: String | Object) {
     skipWhitespace();
     if (str[i] != "(") return undefined;
     i++;
-    const props = [];
+    const props: any[] = [];
     while (i < str.length) {
       skipWhitespace();
       const value = parseValue();
@@ -286,7 +286,7 @@ function JsofParse(text: String | Object) {
   }
 
   function parseGroupValues() {
-    const values = [];
+    const values: any[] = [];
     while (true) {
       skipWhitespace();
 
@@ -340,7 +340,7 @@ function JsofParse(text: String | Object) {
     const values = parseGroupValues();
     if (str[i] == ")") i++;
 
-    if (values.length == 1) {
+    if (values?.length == 1) {
       return values[0];
     }
 
@@ -364,7 +364,7 @@ function JsofParse(text: String | Object) {
   function parseNextCalls(fn) {
     skipWhitespace();
     if (str[i] != "(") return;
-    
+
     const args = parseProps();
     if (args === undefined) return;
 

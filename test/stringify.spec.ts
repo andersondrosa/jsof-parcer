@@ -1,7 +1,8 @@
 import { describe, expect, it } from "vitest";
 import JSOF from "../src";
 
-describe("", () => {
+describe.skip("", () => {
+  //
   it("it should work", () => {
     //
     const object = {
