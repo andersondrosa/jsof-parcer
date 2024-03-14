@@ -1,4 +1,4 @@
-import identifiers from "../identifiers";
+import { identifiers } from "../identifiers";
 import { parseReservedKey } from "../reservedKeys";
 
 const types = { caller: true, lambda: true, prop: true };
@@ -23,6 +23,8 @@ export const getMetaArgs = (x) => (x ? x[identifiers.args] : []);
 export const isInvoker = (x) => x[identifiers.type] == identifiers._caller;
 
 export const isLambda = (x) => x[identifiers.type] == identifiers._lambda;
+
+export const isFunction = (x) => x[identifiers.type] == identifiers._function;
 
 export const isProp = (x) => x[identifiers.type] == identifiers._prop;
 

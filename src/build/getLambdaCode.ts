@@ -1,9 +1,9 @@
 import _difference from "../utils/_difference";
-import getCode from "./getCode";
-import identifiers from "../identifiers";
+import { getCode } from "./getCode";
+import { identifiers } from "../identifiers";
 import { parseReservedKey } from "../reservedKeys";
 
-function getLambdaCode(data) {
+export function getLambdaCode(data) {
   const { code, deps, isObject } = getCode(data[identifiers._return]);
 
   const args = data[identifiers.args].map((key) => parseReservedKey(key));
@@ -21,5 +21,3 @@ function getLambdaCode(data) {
     isLambda: true,
   };
 }
-
-export default getLambdaCode;

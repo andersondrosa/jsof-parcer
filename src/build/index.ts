@@ -1,12 +1,12 @@
-export { default as getFunctionCode } from "./getFunctionCode";
-export { default as getCode } from "./getCode";
-export { default as getInvokerCode } from "./getInvokerCode";
-export { default as getLambdaCode } from "./getLambdaCode";
-export { default as getPropCode } from "./getPropCode";
-export { default as getValueCode } from "./getValueCode";
+export { getInitialFunctionCode } from "./getInitialFunctionCode";
+export { getCode } from "./getCode";
+export { getInvokerCode } from "./getInvokerCode";
+export { getLambdaCode } from "./getLambdaCode";
+export { getPropCode } from "./getPropCode";
+export { getValueCode } from "./getValueCode";
 
-import getFunctionCode from "./getFunctionCode";
+import { getInitialFunctionCode } from "./getInitialFunctionCode";
 
 export function build(json) {
-  return new Function("return " + getFunctionCode(json))();
+  return new Function("return " + getInitialFunctionCode(json))();
 }

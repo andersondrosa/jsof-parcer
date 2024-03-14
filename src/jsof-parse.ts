@@ -1,5 +1,5 @@
 import stripJsonComments from "strip-json-comments";
-import identifiers from "./identifiers";
+import { identifiers } from "./identifiers";
 
 const isAlpha = (char) => char && /^[a-zA-Z_$]+$/i.test(char);
 const isAhoba = (char) => char && /^[@]+$/i.test(char);

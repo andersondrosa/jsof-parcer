@@ -1,5 +1,5 @@
-import getCode from "./build/getCode";
-import identifiers from "./identifiers";
+import { getCode } from "./build/getCode";
+import { identifiers } from "./identifiers";
 import typeOf from "./utils/typeOf";
 
 const isInvoker = (x) =>

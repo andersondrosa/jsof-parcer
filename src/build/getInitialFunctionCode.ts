@@ -1,6 +1,6 @@
-import { getCode } from "./getCode";
+import getCode from "./getCode";
 
-export function getFunctionCode(data) {
+export function getInitialFunctionCode(data) {
   const { code, deps } = getCode(data);
 
   const lib = "lib";

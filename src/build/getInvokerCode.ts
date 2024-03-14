@@ -1,8 +1,8 @@
-import getCode from "./getCode";
+import { getCode } from "./getCode";
 import { isObject } from "./utils";
-import identifiers from "../identifiers";
+import { identifiers } from "../identifiers";
 
-function getInvokerCode(data) {
+export function getInvokerCode(data) {
   const args = data[identifiers.args];
 
   if (!data.into) throw Error("Invalid caller type");
@@ -45,5 +45,3 @@ function getInvokerCode(data) {
     deps: Object.keys(_deps),
   };
 }
-
-export default getInvokerCode;

@@ -1,23 +1,26 @@
 import _isObject from "../utils/_isObject";
-import getInvokerCode from "./getInvokerCode";
-import getLambdaCode from "./getLambdaCode";
-import getPropCode from "./getPropCode";
-import getValueCode from "./getValueCode";
+import { getInvokerCode } from "./getInvokerCode";
+import { getFunctionCode } from "./getFunctionCode";
+import { getLambdaCode } from "./getLambdaCode";
+import { getPropCode } from "./getPropCode";
+import { getValueCode } from "./getValueCode";
 import {
   getMetaType,
   isArray,
   isInvoker,
+  isFunction,
   isLambda,
   isMetaObject,
   isProp,
 } from "./utils";
 
-function getCode(data) {
+export function getCode(data) {
   if (typeof data != "object") return getValueCode(data);
 
   if (isMetaObject(data)) {
     if (isProp(data)) return getPropCode(data);
     if (isInvoker(data)) return getInvokerCode(data);
+    if (isFunction(data)) return getFunctionCode(data);
     if (isLambda(data)) return getLambdaCode(data);
     throw `Invalid MetaType: '${getMetaType(data)}'`;
   }
@@ -44,12 +47,10 @@ function getCode(data) {
   }
 
   const deps = Object.keys(args);
-  
+
   return {
     code: `{${rows.join(", ")}}`,
     deps,
-    isObject: true
+    isObject: true,
   };
 }
-
-export default getCode;

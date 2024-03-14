@@ -1,8 +1,18 @@
 import { describe, expect, it } from "vitest";
-import JSOF from "../src";
+import { stringify } from "../src";
 
 describe("Desc", () => {
   //
+  it("it should render", () => {
+    const object = {
+      _type: "function",
+      args: [],
+      steps: [],
+    };
+    const script = stringify(object);
+    console.log(script);
+  });
+
   it("it should work", () => {
     //
     const object = {
@@ -156,11 +166,11 @@ describe("Desc", () => {
       },
     };
 
-    const json = JSOF.stringify(object);
+    const script = stringify(object);
 
-    console.log(json);
+    // console.log(script);
 
-    expect(json).toBe(
+    expect(script).toBe(
       '{"pipeFunction": pipe(branch(put("inputted-data"), set("test")), context(branch(get("test"), log("test")), branch(get("root.{x}", {"x": get("value")}), set("_.{x}", {"x": get("path")})), branch(compose(set("next"), pipe(json, hash))), branch(get("next"), log("NEXT")), map(matchIn({"key": lower})), log("OUTPUT")))}'
     );
   });

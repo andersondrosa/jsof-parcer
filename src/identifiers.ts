@@ -1,4 +1,4 @@
-const identifiers = {
+export const identifiers = {
   type: "_type",
   into: "into",
   path: "path",
@@ -9,5 +9,3 @@ const identifiers = {
   _lambda: "lambda",
   _function: "function",
 };
-
-export default identifiers;
