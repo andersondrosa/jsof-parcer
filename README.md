@@ -36,26 +36,26 @@ That will be printed as follow:
 {
   "label": "My functional json 😍",
   "animals": {
-    ":type": "function",
+    "_type": "function",
     "path": "concat",
     "props": [
       {
-        ":type": "function",
+        "_type": "function",
         "path": "getAnimal",
         "props": [
           {
-            ":type": "prop",
+            "_type": "prop",
             "path": "types.unicorn"
           },
           "🦄"
         ]
       },
       {
-        ":type": "function",
+        "_type": "function",
         "path": "getAnimal",
         "props": [
           {
-            ":type": "prop",
+            "_type": "prop",
             "path": "types.dog"
           },
           "🐕"
@@ -72,19 +72,19 @@ Create a JSON data as fallow
 
 ```js
 const data = {
-  ":type": "function",
+  "_type": "function",
   path: "pipe",
   props: [
     {
       map: {
         user: [
           {
-            ":type": "function",
+            "_type": "function",
             path: "get",
             props: ["user"],
           },
           {
-            ":type": "function",
+            "_type": "function",
             path: "pick",
             props: ["name", "nick", "email"],
           },
@@ -93,32 +93,32 @@ const data = {
       test: [
         {
           "user.nick": {
-            ":type": "function",
+            "_type": "function",
             path: "match",
             props: [
               {
-                ":type": "prop",
+                "_type": "prop",
                 path: "is.req",
               },
               {
-                ":type": "prop",
+                "_type": "prop",
                 path: "is.slug",
               },
             ],
           },
           "user.email": {
-            ":type": "function",
+            "_type": "function",
             path: "match",
             props: [
               {
-                ":type": "prop",
+                "_type": "prop",
                 path: "is.email",
               },
             ],
           },
         },
         {
-          ":type": "function",
+          "_type": "function",
           path: "get",
           props: ["test"],
         },

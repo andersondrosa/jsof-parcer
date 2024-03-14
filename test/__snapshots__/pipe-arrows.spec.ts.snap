@@ -1,158 +1,158 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`to match snapshot 1`] = `
-Object {
+{
   "_type": "invoker",
-  "args": Array [
-    Object {
+  "args": [
+    {
       "_type": "lambda",
-      "args": Array [
+      "args": [
         "x",
       ],
-      "return": Object {
+      "return": {
         "_type": "invoker",
-        "args": Array [
-          Object {
+        "args": [
+          {
             "_type": "prop",
             "path": "x",
           },
         ],
-        "into": Object {
+        "into": {
           "_type": "invoker",
-          "args": Array [
-            Object {
+          "args": [
+            {
               "_type": "invoker",
-              "args": Array [
-                Object {
+              "args": [
+                {
                   "_type": "lambda",
-                  "args": Array [
+                  "args": [
                     "x",
                     "y",
                   ],
-                  "return": Object {
+                  "return": {
                     "_type": "invoker",
-                    "args": Array [
-                      Object {
+                    "args": [
+                      {
                         "_type": "prop",
                         "path": "x",
                       },
-                      Object {
+                      {
                         "_type": "prop",
                         "path": "y",
                       },
                     ],
-                    "into": Object {
+                    "into": {
                       "_type": "prop",
                       "path": "sum",
                     },
                   },
                 },
               ],
-              "into": Object {
+              "into": {
                 "_type": "invoker",
-                "args": Array [
+                "args": [
                   "calc",
                 ],
-                "into": Object {
+                "into": {
                   "_type": "prop",
                   "path": "set",
                 },
               },
             },
-            Object {
+            {
               "_type": "invoker",
-              "args": Array [
-                Object {
+              "args": [
+                {
                   "_type": "lambda",
-                  "args": Array [
+                  "args": [
                     "x",
                   ],
-                  "return": Object {
+                  "return": {
                     "_type": "invoker",
-                    "args": Array [
-                      Object {
+                    "args": [
+                      {
                         "_type": "prop",
                         "path": "x",
                       },
                     ],
-                    "into": Object {
+                    "into": {
                       "_type": "prop",
                       "path": "toUpper",
                     },
                   },
                 },
               ],
-              "into": Object {
+              "into": {
                 "_type": "invoker",
-                "args": Array [
+                "args": [
                   "upper",
                 ],
-                "into": Object {
+                "into": {
                   "_type": "prop",
                   "path": "set",
                 },
               },
             },
-            Object {
+            {
               "_type": "invoker",
-              "args": Array [
-                Object {
+              "args": [
+                {
                   "_type": "lambda",
-                  "args": Array [
+                  "args": [
                     "m",
                   ],
-                  "return": Object {
+                  "return": {
                     "_type": "invoker",
-                    "args": Array [
-                      Object {
+                    "args": [
+                      {
                         "_type": "prop",
                         "path": "m",
                       },
                     ],
-                    "into": Object {
+                    "into": {
                       "_type": "prop",
                       "path": "throw",
                     },
                   },
                 },
               ],
-              "into": Object {
+              "into": {
                 "_type": "invoker",
-                "args": Array [
+                "args": [
                   "Error",
                 ],
-                "into": Object {
+                "into": {
                   "_type": "prop",
                   "path": "set",
                 },
               },
             },
-            Object {
+            {
               "_type": "invoker",
-              "args": Array [
-                Object {
+              "args": [
+                {
                   "_type": "lambda",
-                  "args": Array [],
-                  "return": Object {
+                  "args": [],
+                  "return": {
                     "_type": "invoker",
-                    "args": Array [
-                      Object {
+                    "args": [
+                      {
                         "_type": "invoker",
-                        "args": Array [
+                        "args": [
                           "MockedFunctionJson",
                         ],
-                        "into": Object {
+                        "into": {
                           "_type": "prop",
                           "path": "get",
                         },
                       },
                     ],
-                    "into": Object {
+                    "into": {
                       "_type": "invoker",
-                      "args": Array [
+                      "args": [
                         "CreateFunctionByJson",
                       ],
-                      "into": Object {
+                      "into": {
                         "_type": "prop",
                         "path": "get",
                       },
@@ -160,361 +160,361 @@ Object {
                   },
                 },
               ],
-              "into": Object {
+              "into": {
                 "_type": "invoker",
-                "args": Array [
+                "args": [
                   "composedFunctionToUpper",
                 ],
-                "into": Object {
+                "into": {
                   "_type": "prop",
                   "path": "set",
                 },
               },
             },
-            Object {
+            {
               "_type": "invoker",
-              "args": Array [
-                Array [
+              "args": [
+                [
                   "alpha",
                   "beta",
                   "omega",
                 ],
               ],
-              "into": Object {
+              "into": {
                 "_type": "invoker",
-                "args": Array [
+                "args": [
                   "data",
                 ],
-                "into": Object {
+                "into": {
                   "_type": "prop",
                   "path": "set",
                 },
               },
             },
-            Object {
+            {
               "_type": "invoker",
-              "args": Array [
-                Object {
+              "args": [
+                {
                   "_type": "invoker",
-                  "args": Array [
-                    Object {
+                  "args": [
+                    {
                       "_type": "invoker",
-                      "args": Array [
-                        Object {
+                      "args": [
+                        {
                           "_type": "prop",
                           "path": "toUpper",
                         },
                       ],
-                      "into": Object {
+                      "into": {
                         "_type": "prop",
                         "path": "map",
                       },
                     },
                   ],
-                  "into": Object {
+                  "into": {
                     "_type": "prop",
                     "path": "mock",
                   },
                 },
               ],
-              "into": Object {
+              "into": {
                 "_type": "invoker",
-                "args": Array [
+                "args": [
                   "MockedFunctionJson",
                 ],
-                "into": Object {
+                "into": {
                   "_type": "prop",
                   "path": "set",
                 },
               },
             },
-            Object {
+            {
               "_type": "invoker",
-              "args": Array [
-                Object {
+              "args": [
+                {
                   "_type": "lambda",
-                  "args": Array [
+                  "args": [
                     "json",
                   ],
-                  "return": Object {
+                  "return": {
                     "_type": "invoker",
-                    "args": Array [
-                      Object {
+                    "args": [
+                      {
                         "_type": "prop",
                         "path": "json",
                       },
                     ],
-                    "into": Object {
+                    "into": {
                       "_type": "prop",
                       "path": "build",
                     },
                   },
                 },
               ],
-              "into": Object {
+              "into": {
                 "_type": "invoker",
-                "args": Array [
+                "args": [
                   "CreateFunctionByJson",
                 ],
-                "into": Object {
+                "into": {
                   "_type": "prop",
                   "path": "set",
                 },
               },
             },
-            Object {
+            {
               "_type": "invoker",
-              "args": Array [
+              "args": [
                 "composedFunctionToUpper",
               ],
-              "into": Object {
+              "into": {
                 "_type": "prop",
                 "path": "get",
               },
             },
-            Object {
+            {
               "_type": "lambda",
-              "args": Array [
+              "args": [
                 "fn",
               ],
-              "return": Object {
+              "return": {
                 "_type": "invoker",
-                "args": Array [
-                  Object {
+                "args": [
+                  {
                     "_type": "invoker",
-                    "args": Array [
-                      Object {
+                    "args": [
+                      {
                         "_type": "invoker",
-                        "args": Array [
+                        "args": [
                           "data",
                         ],
-                        "into": Object {
+                        "into": {
                           "_type": "prop",
                           "path": "get",
                         },
                       },
                     ],
-                    "into": Object {
+                    "into": {
                       "_type": "prop",
                       "path": "fn",
                     },
                   },
                 ],
-                "into": Object {
+                "into": {
                   "_type": "invoker",
-                  "args": Array [
+                  "args": [
                     "data",
                   ],
-                  "into": Object {
+                  "into": {
                     "_type": "prop",
                     "path": "set",
                   },
                 },
               },
             },
-            Object {
+            {
               "_type": "invoker",
-              "args": Array [
-                Object {
+              "args": [
+                {
                   "_type": "invoker",
-                  "args": Array [
+                  "args": [
                     "example",
                   ],
-                  "into": Object {
+                  "into": {
                     "_type": "invoker",
-                    "args": Array [
+                    "args": [
                       "upper",
                     ],
-                    "into": Object {
+                    "into": {
                       "_type": "prop",
                       "path": "get",
                     },
                   },
                 },
               ],
-              "into": Object {
+              "into": {
                 "_type": "prop",
                 "path": "identity",
               },
             },
-            Object {
+            {
               "_type": "lambda",
-              "args": Array [
+              "args": [
                 "x",
               ],
-              "return": Object {
+              "return": {
                 "_type": "invoker",
-                "args": Array [
-                  Object {
+                "args": [
+                  {
                     "_type": "invoker",
-                    "args": Array [
-                      Object {
+                    "args": [
+                      {
                         "_type": "prop",
                         "path": "x",
                       },
                     ],
-                    "into": Object {
+                    "into": {
                       "_type": "prop",
                       "path": "toLower",
                     },
                   },
                 ],
-                "into": Object {
+                "into": {
                   "_type": "prop",
                   "path": "of",
                 },
               },
             },
-            Object {
+            {
               "_type": "invoker",
-              "args": Array [
-                Object {
+              "args": [
+                {
                   "_type": "invoker",
-                  "args": Array [
+                  "args": [
                     "data",
                   ],
-                  "into": Object {
+                  "into": {
                     "_type": "prop",
                     "path": "get",
                   },
                 },
               ],
-              "into": Object {
+              "into": {
                 "_type": "prop",
                 "path": "concat",
               },
             },
-            Object {
+            {
               "_type": "invoker",
-              "args": Array [
-                Object {
+              "args": [
+                {
                   "_type": "invoker",
-                  "args": Array [
+                  "args": [
                     "TEST ERROR 1",
                   ],
-                  "into": Object {
+                  "into": {
                     "_type": "invoker",
-                    "args": Array [
+                    "args": [
                       "Error",
                     ],
-                    "into": Object {
+                    "into": {
                       "_type": "prop",
                       "path": "get",
                     },
                   },
                 },
-                Object {
+                {
                   "_type": "prop",
                   "path": "identity",
                 },
               ],
-              "into": Object {
+              "into": {
                 "_type": "prop",
                 "path": "try",
               },
             },
-            Object {
+            {
               "_type": "invoker",
-              "args": Array [
+              "args": [
                 "acc",
-                Object {
+                {
                   "_type": "lambda",
-                  "args": Array [
+                  "args": [
                     "acc",
                     "x",
                   ],
-                  "return": Object {
+                  "return": {
                     "_type": "invoker",
-                    "args": Array [
-                      Object {
+                    "args": [
+                      {
                         "_type": "prop",
                         "path": "acc",
                       },
-                      Object {
+                      {
                         "_type": "invoker",
-                        "args": Array [
-                          Object {
+                        "args": [
+                          {
                             "_type": "invoker",
-                            "args": Array [
-                              Object {
+                            "args": [
+                              {
                                 "_type": "prop",
                                 "path": "x",
                               },
                             ],
-                            "into": Object {
+                            "into": {
                               "_type": "prop",
                               "path": "toLower",
                             },
                           },
                         ],
-                        "into": Object {
+                        "into": {
                           "_type": "prop",
                           "path": "of",
                         },
                       },
                     ],
-                    "into": Object {
+                    "into": {
                       "_type": "prop",
                       "path": "concat",
                     },
                   },
                 },
               ],
-              "into": Object {
+              "into": {
                 "_type": "prop",
                 "path": "set",
               },
             },
-            Object {
+            {
               "_type": "invoker",
-              "args": Array [
-                Object {
+              "args": [
+                {
                   "_type": "invoker",
-                  "args": Array [
+                  "args": [
                     "acc",
                   ],
-                  "into": Object {
+                  "into": {
                     "_type": "prop",
                     "path": "get",
                   },
                 },
-                Array [],
+                [],
               ],
-              "into": Object {
+              "into": {
                 "_type": "prop",
                 "path": "reduce",
               },
             },
-            Object {
+            {
               "_type": "invoker",
-              "args": Array [
-                Object {
+              "args": [
+                {
                   "_type": "lambda",
-                  "args": Array [
+                  "args": [
                     "x",
                   ],
-                  "return": Object {
+                  "return": {
                     "_type": "invoker",
-                    "args": Array [
-                      Object {
+                    "args": [
+                      {
                         "_type": "prop",
                         "path": "x",
                       },
                     ],
-                    "into": Object {
+                    "into": {
                       "_type": "prop",
                       "path": "toUpper",
                     },
                   },
                 },
               ],
-              "into": Object {
+              "into": {
                 "_type": "prop",
                 "path": "map",
               },
             },
           ],
-          "into": Object {
+          "into": {
             "_type": "prop",
             "path": "pipe",
           },
@@ -522,7 +522,7 @@ Object {
       },
     },
   ],
-  "into": Object {
+  "into": {
     "_type": "prop",
     "path": "context",
   },

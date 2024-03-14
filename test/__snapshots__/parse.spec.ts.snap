@@ -1,12 +1,12 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`it should work 1`] = `
-Object {
-  "array": Array [
+{
+  "array": [
     1,
     2,
     3,
-    Array [
+    [
       1,
       2,
       3,
@@ -15,46 +15,46 @@ Object {
       null,
     ],
   ],
-  "function": Object {
+  "function": {
     "_type": "invoker",
-    "args": Array [
-      Object {
+    "args": [
+      {
         "_type": "prop",
         "path": "props.foo",
       },
-      Object {
+      {
         "_type": "prop",
         "path": "props.bar",
       },
     ],
-    "into": Object {
+    "into": {
       "_type": "prop",
       "path": "myCustomFunction",
     },
   },
   "label": "My functional json",
-  "nested": Object {
-    "foo": Object {
-      "bar": Object {
+  "nested": {
+    "foo": {
+      "bar": {
         "_type": "invoker",
-        "args": Array [
+        "args": [
           "lorem",
-          Object {
+          {
             "_type": "invoker",
-            "args": Array [
-              Array [
+            "args": [
+              [
                 1,
                 2,
                 3,
               ],
             ],
-            "into": Object {
+            "into": {
               "_type": "prop",
               "path": "ipsum.dolor",
             },
           },
         ],
-        "into": Object {
+        "into": {
           "_type": "prop",
           "path": "baz",
         },

@@ -1,6 +1,8 @@
-import JSOF from "../dist";
+import { describe, expect, it } from "vitest";
+import JSOF from "../src";
 
-const code1 = `
+describe("", () => {
+  const code1 = `
 (x => x |> (
   (
     ((x, y) => ((x, y) |> sum)) |> ("calc" |> set),
@@ -27,9 +29,9 @@ const code1 = `
 |> context
 `;
 
-test("must contain equal JSON", () => {
-  expect(
-    JSOF.parse(`
+  it("must contain equal JSON", () => {
+    expect(
+      JSOF.parse(`
     context(x => pipe(
       set("calc") ((x, y) => sum(x, y)),
       set("upper") (x => toUpper(x)),
@@ -51,9 +53,10 @@ test("must contain equal JSON", () => {
       map(x => toUpper(x)),
     )(x))
   `)
-  ).toEqual(JSOF.parse(code1));
-});
+    ).toEqual(JSOF.parse(code1));
+  });
 
-test("to match snapshot", () => {
-  expect(JSOF.parse(code1)).toMatchSnapshot();
+  it("to match snapshot", () => {
+    expect(JSOF.parse(code1)).toMatchSnapshot();
+  });
 });
