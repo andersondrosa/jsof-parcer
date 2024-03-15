@@ -2,7 +2,7 @@ import { getCode } from "./build/getCode";
 import { identifiers } from "./identifiers";
 import typeOf from "./utils/typeOf";
 
-const isInvoker = (x) =>
+const isCaller = (x) =>
   typeOf(x) == "object" && x[identifiers.type] == identifiers._caller;
 
 const isVar = (x) =>
@@ -37,7 +37,7 @@ function JsofStringify(data: any) {
     return typeof data === "string" ? JSON.stringify(data) : data;
   }
 
-  if (isInvoker(data)) {
+  if (isCaller(data)) {
     return getFunction(data);
   }
 

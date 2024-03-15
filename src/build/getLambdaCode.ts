@@ -6,7 +6,8 @@ import { parseReservedKey } from "../reservedKeys";
 export function getLambdaCode(data) {
   const { code, deps, isObject } = getCode(data[identifiers._return]);
 
-  const args = data[identifiers.args].map((key) => parseReservedKey(key));
+  const args =
+    data[identifiers.args]?.map((key) => parseReservedKey(key)) || [];
 
   const argsCode = "(" + args.join(", ") + ")";
 

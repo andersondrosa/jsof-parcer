@@ -8,4 +8,7 @@ export const identifiers = {
   _prop: "prop",
   _lambda: "lambda",
   _function: "function",
+  _set: "assign",
+  _const: "const",
+  _let: "let",
 };

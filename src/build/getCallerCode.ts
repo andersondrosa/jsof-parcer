@@ -1,11 +1,11 @@
-import { getCode } from "./getCode";
+import { ReturnCodeData, getCode } from "./getCode";
 import { isObject } from "./utils";
-import { identifiers } from "../identifiers";
+import { CallerNode } from "./types";
 
-export function getInvokerCode(data) {
-  const args = data[identifiers.args];
-
+export function getCallerCode(data: CallerNode) {
   if (!data.into) throw Error("Invalid caller type");
+
+  const args = data.args;
 
   if (data.into._type == "prop" && data.into.path == "mock") {
     return {
@@ -15,7 +15,7 @@ export function getInvokerCode(data) {
     };
   }
 
-  const props = [];
+  const props: ReturnCodeData[] = [];
 
   const target = getCode(data.into);
 

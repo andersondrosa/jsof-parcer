@@ -5,6 +5,7 @@ function validKey(key) {
     throw Error(`Invalid reserved variable: "${key}"`);
   if (!key.match("^[a-zA-Z_][0-9a-zA-Z_]*$"))
     throw Error(`Invalid variable: "${key}"`);
+  console.log(">>", key);
   return key;
 }
 

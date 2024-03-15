@@ -370,19 +370,19 @@ function JsofParse(text: String | Object) {
 
     if (!args.next) return caller(fn, args.props);
 
-    const getInvoker = (data, last) => {
+    const getCaller = (data, last) => {
       if (!data.next) return last;
-      const intoInvoker = last ? last : caller(fn, data.props);
-      return getInvoker(
+      const intoCaller = last ? last : caller(fn, data.props);
+      return getCaller(
         data.next,
         caller(
-          intoInvoker, //
+          intoCaller, //
           data.next.props
         )
       );
     };
 
-    return getInvoker(args, null);
+    return getCaller(args, null);
   }
 
   function parseFunction() {
@@ -420,19 +420,19 @@ function JsofParse(text: String | Object) {
 
     if (!args.next) return caller(_prop(path), args.props);
 
-    const getInvoker = (data, last) => {
+    const getCaller = (data, last) => {
       if (!data.next) return last;
-      const intoInvoker = last ? last : caller(_prop(path), data.props);
-      return getInvoker(
+      const intoCaller = last ? last : caller(_prop(path), data.props);
+      return getCaller(
         data.next,
         caller(
-          intoInvoker, //
+          intoCaller, //
           data.next.props
         )
       );
     };
 
-    return getInvoker(args, null);
+    return getCaller(args, null);
   }
 
   function skipWhitespace() {

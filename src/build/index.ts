@@ -1,6 +1,6 @@
 export { getInitialFunctionCode } from "./getInitialFunctionCode";
 export { getCode } from "./getCode";
-export { getInvokerCode } from "./getInvokerCode";
+export { getCallerCode } from "./getCallerCode";
 export { getLambdaCode } from "./getLambdaCode";
 export { getPropCode } from "./getPropCode";
 export { getValueCode } from "./getValueCode";
