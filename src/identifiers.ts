@@ -1,5 +1,5 @@
 export const identifiers = {
-  type: "_type",
+  type: "type",
   into: "into",
   path: "path",
   args: "args",

@@ -172,7 +172,7 @@ function JsofParse(text: String | Object) {
       while (sequence) {
         let { value, next } = sequence;
 
-        if (!value || !value._type) unexpectedToken(value);
+        if (!value || !value.type) unexpectedToken(value);
 
         response = caller(value, args(response));
         sequence = next;

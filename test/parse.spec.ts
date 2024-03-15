@@ -92,18 +92,18 @@ describe("", () => {
   it("it should work with one function and correctly response", () => {
     const str = `map()`;
     expect(JSOF.parse(str)).toEqual({
-      _type: "caller",
+      type: "caller",
       into: {
-        _type: "prop",
+        type: "prop",
         path: "map",
       },
       args: [],
     });
     expect(
       JSOF.stringify({
-        _type: "caller",
+        type: "caller",
         into: {
-          _type: "prop",
+          type: "prop",
           path: "map",
         },
         args: [],
@@ -122,7 +122,7 @@ describe("", () => {
     console.log(script);
 
     // expect(json).toEqual({
-    //   _type: "prop",
+    //   type: "prop",
     //   path: "props.foo.bar",
     // });
   });
